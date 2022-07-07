@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
+    
 	
     @livewireStyles
 </head>
@@ -579,11 +580,12 @@
         <script src="{{ asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
-        <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script> --}}
         <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
         <script src="{{ asset('assets/js/functions.js') }}"></script>
+        <script src="{{ asset('assets/js/app.js') }}" defer></script>
         @livewireScripts
     </body>
 
