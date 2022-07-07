@@ -9,6 +9,7 @@ use App\Http\Livewire\User\UserDeshboardComponent;
 use App\Http\Livewire\Admin\AdminDeshboardComponent;
 use App\Http\Livewire\ProductDetailsComponent;
 use App\Http\Livewire\CategoryComponent;
+use App\Http\Livewire\SearchComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/cart', CartComponent::class)->name('product.cart');
 Route::get('/checkout', CheckoutComponent::class);
 Route::get('/productdetails/{slug}', ProductDetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
+Route::get('/search', SearchComponent::class)->name('product.search');
 
 // Route::middleware([
 //     'auth:sanctum',

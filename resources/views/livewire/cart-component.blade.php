@@ -12,11 +12,10 @@
         <div class=" main-content-area">
 
             <div class="wrap-iten-in-cart">
-				@if (Session:: has('cart-msg'))
+				@if(Session::has('cart-msg'))
 				<div class="alert alert-success">
-					<strong> Success </strong> {{ Session::get('cart-msg') }}
-				</div>
-					
+					<strong> Success </strong> {{Session::get('cart-msg')}}
+				</div>	
 				@endif
                 @if (Cart::count() > 0)
 
