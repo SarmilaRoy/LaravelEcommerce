@@ -15,10 +15,10 @@
                         
                         <div class="row">
                             <div class="col-md-6">
-                                All Categories
+                                All Product
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addCategory') }}" class="btn btn-success pull-right">Add New</a>
+                                <a href="{{ route('admin.addProduct') }}" class="btn btn-success pull-right">Add New</a>
                             </div>
                         </div>
                     </div>
