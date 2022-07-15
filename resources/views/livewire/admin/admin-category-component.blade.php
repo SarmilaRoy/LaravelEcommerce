@@ -23,6 +23,10 @@
                         </div>
                     </div>
                     <div class="panel-body">
+                        @if (Session::has('msg'))
+                        <div class="alert alert-success" role="alert">{{ Session::get('msg') }}</div>
+                            
+                        @endif
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -38,6 +42,10 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.editCategory',['category_slug'=>$category->slug]) }}"><i class="fa fa-edit fa-2x"></i></a>
+                                            <a href="#" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
 
