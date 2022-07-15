@@ -10,6 +10,7 @@ use App\Http\Livewire\Admin\AdminDeshboardComponent;
 use App\Http\Livewire\ProductDetailsComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\Admin\AdminCategoryComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,4 +54,5 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
 //admin
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function () {
     Route::get('/admin/deshboard',AdminDeshboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/categories',AdminCategoryComponent::class)->name('admin.categories');
 });
