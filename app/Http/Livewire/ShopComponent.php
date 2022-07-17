@@ -26,10 +26,16 @@ class ShopComponent extends Component
     }
 
     public function store($product_id,$product_name,$product_price){
-        Cart::add($product_id,$product_name,1,$product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id,$product_name,1,$product_price)->associate('App\Models\Product');
         session()->flash('cart-msg','Item Add in Cart');
         return redirect()->route('product.cart');
     }
+
+    public function addToWishlist($product_id,$product_name,$product_price){
+        Cart::instance('wishlist')->add($product_id,$product_name,1,$product_price)->associate('App\Models\Product');
+        return redirect()->route('product.shop');
+    }
+
     use WithPagination;
     public function render()
     {

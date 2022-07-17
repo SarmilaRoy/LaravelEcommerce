@@ -56,9 +56,39 @@
                 </div>
                 <!--end wrap shop control-->
 
+
+                <style>
+                    .product-wish {
+                        position: absolute;
+                        top: 10%;
+                        left: 0;
+                        z-index: 99;
+                        right: 30px;
+                        text-align: right;
+                        padding-top: 0;
+                    }
+
+                    .product-wish .fa {
+                        color: #cbcbcb;
+                        font-size: 32px;
+                    }
+
+                    .product-wish .fa:hover {
+                        color: #ff7007;
+                    }
+
+                    .fill-heart {
+                        color: #ff7007 !important;
+                    }
+                </style>
                 <div class="row">
 
                     <ul class="product-list grid-products equal-container">
+                        @php
+                            $wishitem = Cart::instance('wishlist')
+                                ->content()
+                                ->pluck('id');
+                        @endphp
                         @foreach ($products as $product)
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-3 equal-elem ">
@@ -78,6 +108,16 @@
                                         <a href="#" class="btn add-to-cart"
                                             wire:click.prevent="store({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})">Add
                                             To Cart</a>
+                                        <div class="product-wish">
+                                            @if ($wishitem->contains($product->id))
+                                                <a href="#"><i class="fa fa-heart fill-heart"></i></a>
+                                            @else
+                                                <a href="#"
+                                                    wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i
+                                                        class="fa fa-heart"></i></a>
+                                            @endif
+
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -128,7 +168,8 @@
                             <li class="list-item"><a class="filter-link " href="#">Sound & Speaker</a></li>
                             <li class="list-item"><a class="filter-link " href="#">Shop Smartphone & Tablets</a>
                             </li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">Printer & Ink</a>
+                            <li class="list-item default-hiden"><a class="filter-link " href="#">Printer &
+                                    Ink</a>
                             </li>
                             <li class="list-item default-hiden"><a class="filter-link " href="#">CPUs &
                                     Prosecsors</a></li>
@@ -145,7 +186,8 @@
                 </div><!-- brand widget-->
 
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Price<span class="text-info">${{ $min_price }} - ${{ $max_price }}</span></h2>
+                    <h2 class="widget-title">Price<span class="text-info">${{ $min_price }} -
+                            ${{ $max_price }}</span></h2>
                     <div class="widget-content">
                         <div id="slider" wire:ignore></div>
                     </div>
@@ -277,24 +319,24 @@
 
 @push('scripts')
     <script>
-		var slider=document.getElementById('slider');
-		noUiSlider.create(slider,{
-			start : [1,1000],
-			connect :true,
-			range :{
-				'min' : 1,
-				'max' : 1000
-			},
-			pips:{
-				mode:'steps',
-				stepped:true,
-				density:4
-			}
-		});
+        var slider = document.getElementById('slider');
+        noUiSlider.create(slider, {
+            start: [1, 1000],
+            connect: true,
+            range: {
+                'min': 1,
+                'max': 1000
+            },
+            pips: {
+                mode: 'steps',
+                stepped: true,
+                density: 4
+            }
+        });
 
-		slider.noUiSlider.on('update',function(value){
-			@this.set('min_price',value[1]);
-			@this.set('max_price',value[1000]);
-		});
-	</script>
+        slider.noUiSlider.on('update', function(value) {
+            @this.set('min_price', value[1]);
+            @this.set('max_price', value[1000]);
+        });
+    </script>
 @endpush
