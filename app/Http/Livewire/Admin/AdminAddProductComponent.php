@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use Livewire\WithfileUploads;
 use Carbon\Carbon;
+use Validator;
 
 
 class AdminAddProductComponent extends Component
@@ -45,7 +46,7 @@ class AdminAddProductComponent extends Component
             'description'=>'required',
             'regular_price'=>'required|numeric',
             'sale_price'=>'numeric',
-            'image'=>'required|mimes.jpeg,png',
+            'image'=>'required|mimes:jpeg,png,jpg',
             'SKU'=>'required',
             'stock_status'=>'required',
             'featured'=>'required',
@@ -61,7 +62,7 @@ class AdminAddProductComponent extends Component
             'description'=>'required',
             'regular_price'=>'required|numeric',
             'sale_price'=>'numeric',
-            'image'=>'required|mimes.jpeg,png',
+            'image'=>'required|mimes:jpeg,png,jpg',
             'SKU'=>'required',
             'stock_status'=>'required',
             'featured'=>'required',
