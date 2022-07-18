@@ -28,7 +28,6 @@ class ProductDetailsComponent extends Component
        $this->qty++;
        
        
-       
     }
     public function decreaseQuantity(){
         if($this->qty >1){
