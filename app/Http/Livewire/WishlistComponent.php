@@ -3,7 +3,8 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Cart;
+//use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Product;
 class WishlistComponent extends Component
 {

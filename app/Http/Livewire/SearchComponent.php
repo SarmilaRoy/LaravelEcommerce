@@ -5,7 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Product;
-use Cart;
+//use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Category;
 
 class SearchComponent extends Component
