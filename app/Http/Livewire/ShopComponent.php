@@ -37,6 +37,16 @@ class ShopComponent extends Component
         return redirect()->route('product.shop');
     }
 
+    public function romoveFormWishlist($product_id){
+      foreach (Cart::instance('wishlist')->content() as $wishitemRemove) {
+        if($wishitemRemove->id == $product_id){
+            Cart::instance('wishlist')->remove($wishitemRemove->rowId);
+            $this->emitTo('wishlist-count-component','refreshComponent');
+            return redirect()->route('product.shop');
+        }
+      }
+    }
+
     use WithPagination;
     public function render()
     {

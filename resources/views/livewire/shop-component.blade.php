@@ -110,7 +110,7 @@
                                             To Cart</a>
                                         <div class="product-wish">
                                             @if ($wishitem->contains($product->id))
-                                                <a href="#"><i class="fa fa-heart fill-heart"></i></a>
+                                                <a href="#" wire:click.prevent="romoveFormWishlist({{ $product->id }})"><i class="fa fa-heart fill-heart"></i></a>
                                             @else
                                                 <a href="#"
                                                     wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i
