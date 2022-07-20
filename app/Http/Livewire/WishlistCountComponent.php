@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class WishlistCountComponent extends Component
 {
-    protected $listener= ['refreshComponent'=> '$refresh'];
+    protected $listeners= ['refreshComponent'=> '$refresh'];
     public function render()
     {
         return view('livewire.wishlist-count-component');

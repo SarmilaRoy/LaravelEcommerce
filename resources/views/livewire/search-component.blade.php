@@ -1,5 +1,4 @@
 
-	<!--main area-->
 	<main id="main" class="main-site left-sidebar">
 
 		<div class="container">
@@ -54,7 +53,7 @@
 
 						</div>
 
-					</div><!--end wrap shop control-->
+					</div>
 
                     @if ($products->count()>0)
 
@@ -98,7 +97,7 @@
 						</ul>
 						<p class="result-count">Showing 1-8 of 12 result</p> --}}
 					</div>
-				</div><!--end main products area-->
+				</div>
 
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
 					<div class="widget mercado-widget categories-widget">
@@ -113,7 +112,7 @@
 								
 							</ul>
 						</div>
-					</div><!-- Categories widget-->
+					</div>
 
 					<div class="widget mercado-widget filter-widget brand-widget">
 						<h2 class="widget-title">Brand</h2>
@@ -132,7 +131,7 @@
 								<li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="#">Show more<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
 							</ul>
 						</div>
-					</div><!-- brand widget-->
+					</div>
 
 					<div class="widget mercado-widget filter-widget price-filter">
 						<h2 class="widget-title">Price</h2>
@@ -144,7 +143,7 @@
 								<button class="filter-submit">Filter</button>
 							</p>
 						</div>
-					</div><!-- Price-->
+					</div>
 
 					<div class="widget mercado-widget filter-widget">
 						<h2 class="widget-title">Color</h2>
@@ -158,7 +157,7 @@
 								<li class="list-item"><a class="filter-link " href="#">Pink <span>(29)</span></a></li>
 							</ul>
 						</div>
-					</div><!-- Color -->
+					</div>
 
 					<div class="widget mercado-widget filter-widget">
 						<h2 class="widget-title">Size</h2>
@@ -173,7 +172,7 @@
 								<figure><img src="{{ asset('assets/images/size-banner-widget.jpg') }}" width="270" height="331" alt=""></figure>
 							</div>
 						</div>
-					</div><!-- Size -->
+					</div>
 
 					<div class="widget mercado-widget widget-product">
 						<h2 class="widget-title">Popular Products</h2>
@@ -237,13 +236,13 @@
 
 							</ul>
 						</div>
-					</div><!-- brand widget-->
+					</div>
 
-				</div><!--end sitebar-->
+				</div>
 
-			</div><!--end row-->
+			</div>
 
-		</div><!--end container-->
+		</div>
 
 	</main>
-	<!--main area-->
+

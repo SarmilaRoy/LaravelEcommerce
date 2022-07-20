@@ -61,7 +61,7 @@
 
                             </tbody>
                         </table>
-                        {{-- {{ $sliders->links() }} --}}
+
                     </div>
                 </div>
             </div>

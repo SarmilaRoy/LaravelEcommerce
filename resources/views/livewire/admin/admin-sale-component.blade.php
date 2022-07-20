@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-lebel">Sale Date</label>
-                                <div class="col-md-4">
+                                <div class="col-md-4" wire:ignore>
                                     <input type="text" id="sale-date" placeholder="YYYY/MM/DD H:M:S"
                                         class="form-control input-md" wire:model="sale_date">
                                 </div>

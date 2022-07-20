@@ -1,4 +1,4 @@
-<!--main area-->
+
 <main id="main" class="main-site left-sidebar">
     <div class="container">
         <div class="wrap-breadcrumb">

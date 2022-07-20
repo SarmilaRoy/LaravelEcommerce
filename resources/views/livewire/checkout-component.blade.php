@@ -1,4 +1,4 @@
-    <!--main area-->
+
 	<main id="main" class="main-site">
 
 		<div class="container">
@@ -243,14 +243,14 @@
 								</div>
 							</div>
 						</div>
-					</div><!--End wrap-products-->
+					</div>
 				</div>
 
-			</div><!--end main content area-->
-		</div><!--end container-->
+			</div>
+		</div>
 
 	</main>
-	<!--main area-->
+
 
 
 

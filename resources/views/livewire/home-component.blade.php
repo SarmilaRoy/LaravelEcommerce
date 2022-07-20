@@ -1,7 +1,7 @@
  <main id="main">
      <div class="container">
 
-         <!--MAIN SLIDE-->
+        
          <div class="wrap-main-slide">
              <div class="slide-carousel owl-carousel style-nav-1" data-items="1" data-loop="1" data-nav="true"
                  data-dots="false">
@@ -22,7 +22,7 @@
              </div>
          </div>
 
-         <!--BANNER-->
+        
          <div class="wrap-banner style-twin-default">
              <div class="banner-item">
                  <a href="#" class="link-banner banner-effect-1">
@@ -38,7 +38,7 @@
              </div>
          </div>
 
-         <!--On Sale-->
+        
          @if ($sale_products->count() > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now() )
          <div class="wrap-show-advance-info-box style-1 has-countdown">
              <h3 class="title-box">On Sale</h3>
@@ -73,7 +73,7 @@
          </div>
          @endif
 
-         <!--Latest Products-->
+         
          <div class="wrap-show-advance-info-box style-1">
              <h3 class="title-box">Latest Products</h3>
              <div class="wrap-top-banner">
@@ -121,7 +121,7 @@
              </div>
          </div>
 
-         <!--Product Categories-->
+        
          <div class="wrap-show-advance-info-box style-1">
              <h3 class="title-box">Product Categories</h3>
              <div class="wrap-top-banner">

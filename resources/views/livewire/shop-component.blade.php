@@ -1,4 +1,4 @@
-<!--main area-->
+
 <main id="main" class="main-site left-sidebar">
 
     <div class="container">
@@ -54,7 +54,7 @@
                     </div>
 
                 </div>
-                <!--end wrap shop control-->
+              
 
 
                 <style>
@@ -138,7 +138,7 @@
 						<p class="result-count">Showing 1-8 of 12 result</p> --}}
                 </div>
             </div>
-            <!--end main products area-->
+          
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                 <div class="widget mercado-widget categories-widget">
@@ -154,7 +154,7 @@
 
                         </ul>
                     </div>
-                </div><!-- Categories widget-->
+                </div>
 
                 <div class="widget mercado-widget filter-widget brand-widget">
                     <h2 class="widget-title">Brand</h2>
@@ -183,15 +183,16 @@
                                         class="fa fa-angle-down" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
-                </div><!-- brand widget-->
+                </div>
 
                 <div class="widget mercado-widget filter-widget price-filter">
                     <h2 class="widget-title">Price<span class="text-info">${{ $min_price }} -
                             ${{ $max_price }}</span></h2>
+
                     <div class="widget-content">
                         <div id="slider" wire:ignore></div>
                     </div>
-                </div><!-- Price-->
+                </div>
 
                 <div class="widget mercado-widget filter-widget">
                     <h2 class="widget-title">Color</h2>
@@ -211,7 +212,7 @@
                             </li>
                         </ul>
                     </div>
-                </div><!-- Color -->
+                </div>
 
                 <div class="widget mercado-widget filter-widget">
                     <h2 class="widget-title">Size</h2>
@@ -227,7 +228,7 @@
                                     height="331" alt=""></figure>
                         </div>
                     </div>
-                </div><!-- Size -->
+                </div>
 
                 <div class="widget mercado-widget widget-product">
                     <h2 class="widget-title">Popular Products</h2>
@@ -303,40 +304,40 @@
 
                         </ul>
                     </div>
-                </div><!-- brand widget-->
+                </div>
 
             </div>
-            <!--end sitebar-->
+           
 
         </div>
-        <!--end row-->
+     
 
     </div>
-    <!--end container-->
+ 
 
 </main>
-<!--main area-->
+
 
 @push('scripts')
     <script>
         var slider = document.getElementById('slider');
-        noUiSlider.create(slider, {
-            start: [1, 1000],
+        noUiSlider.create(slider,{
+            start: [1,1000],
             connect: true,
-            range: {
+            range:{
                 'min': 1,
                 'max': 1000
             },
-            pips: {
-                mode: 'steps',
-                stepped: true,
-                density: 4
+            pips:{
+                mode:'steps',
+                stepped:true,
+                density:4
             }
         });
 
-        slider.noUiSlider.on('update', function(value) {
-            @this.set('min_price', value[1]);
-            @this.set('max_price', value[1000]);
+        slider.noUiSlider.on('update',function(value) {
+            @this.set('min_price',value[0]);
+            @this.set('max_price',value[1]);
         });
     </script>
 @endpush

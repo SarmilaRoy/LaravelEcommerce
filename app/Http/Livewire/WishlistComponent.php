@@ -13,7 +13,7 @@ class WishlistComponent extends Component
           if($wishitemRemove->id == $product_id){
               Cart::instance('wishlist')->remove($wishitemRemove->rowId);
               $this->emitTo('wishlist-count-component','refreshComponent');
-              return redirect()->route('product.wishlist');
+            
           }
         }
       }
@@ -30,7 +30,7 @@ class WishlistComponent extends Component
       Cart::instance('cart')->add($item->id,$item->name,1,$item->price)->associate('App\Models\Product');
       $this->emitTo('wishlist-count-component','refreshComponent');
       $this->emitTo('cart-count-component','refreshComponent');
-      return redirect()->route('product.wishlist');
+     
     }
   
     public function render()
