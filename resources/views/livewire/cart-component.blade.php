@@ -78,7 +78,7 @@
                                 class="index">${{ Cart::instance('cart')->subtotal() }}</b></p>
                         @if (Session::has('coupon'))
                             <p class="summary-info"><span class="title">Discount 
-                                    {{-- ({{ Session::get('coupon')['code'] }}) --}}
+                                    ({{ Session::get('coupon')['code'] }})
                                     <a href="#"
                                         wire:click.prevent="removeCoupon"><i
                                             class="fa fa-times taxt-danger"></i></a></span><b class="index">

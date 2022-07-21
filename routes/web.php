@@ -25,6 +25,7 @@ use App\Http\Livewire\WishlistComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
+use App\Http\Livewire\ThankyouComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,7 @@ Route::get('/productdetails/{slug}', ProductDetailsComponent::class)->name('prod
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 Route::get('/search', SearchComponent::class)->name('product.search');
 Route::get('/wishlist', WishlistComponent::class)->name('product.wishlist');
+Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
 // Route::middleware([
 //     'auth:sanctum',
