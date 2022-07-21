@@ -43,7 +43,7 @@ use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 Route::get('/', HomeComponent::class);
 Route::get('/shop', ShopComponent::class)->name('product.shop');;
 Route::get('/cart', CartComponent::class)->name('product.cart');
-Route::get('/checkout', CheckoutComponent::class);
+Route::get('/checkout', CheckoutComponent::class)->name('checkouts');
 Route::get('/productdetails/{slug}', ProductDetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 Route::get('/search', SearchComponent::class)->name('product.search');
