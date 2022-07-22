@@ -28,10 +28,10 @@
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Mobile</th>
-                                    <th>Action</th>
                                     <th>Zipcode</th>
                                     <th>Status</th>
                                     <th>Order Date</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,6 +49,10 @@
                                         <td>{{ $order->zipcode }}</td>
                                         <td>{{ $order->status }}</td>
                                         <td>{{ $order->created_at }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.orderdetails',['order_id'=>$order->id]) }}" class="btn btn-info btn-sm">Details</a>
+                                            {{-- <a href="#" onclick="confirm('Are you sure, You want to delete this category ?')||event.stopimmediatepropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
