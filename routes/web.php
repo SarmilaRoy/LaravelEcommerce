@@ -26,6 +26,7 @@ use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\Admin\AdminOrderComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,4 +88,5 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function () {
     Route::get('/admin/coupons',AdminCouponsComponent::class)->name('admin.coupons');
     Route::get('/admin/coupon/add',AdminAddCouponsComponent::class)->name('admin.addCoupon');
     Route::get('/admin/coupon/edit/{coupon_id}',AdminEditCouponsComponent::class)->name('admin.editCoupon');
+    Route::get('/admin/orders',AdminOrderComponent::class)->name('admin.orders');
 });
