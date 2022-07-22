@@ -51,15 +51,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6">
-                                Order Item
-                            </div>
-                            <div class="col-md-6">
-                                <a href="{{ route('admin.orders') }}" class="btn btn-success pull-right">All
-                                    Orders</a>
-                            </div>
-                        </div>
+                        Order Item
                     </div>
                     <div class="panel-body">
 
