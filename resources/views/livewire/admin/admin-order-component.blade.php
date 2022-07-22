@@ -14,10 +14,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         All Order
-
                     </div>
                     <div class="panel-body">
-
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -51,10 +49,8 @@
                                         <td>{{ $order->zipcode }}</td>
                                         <td>{{ $order->status }}</td>
                                         <td>{{ $order->created_at }}</td>
-
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                         {{ $orders->links() }}
@@ -62,6 +58,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
