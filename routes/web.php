@@ -71,7 +71,7 @@ Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::get('/user/deshboard',UserDeshboardComponent::class)->name('user.dashboard');
 
-    Route::get('/user/orders',AdminOrderComponent::class)->name('user.orders');
+    Route::get('/user/orders',UserOrderComponent::class)->name('user.orders');
     Route::get('/user/orders/details/{order_id}',UserOrderDetailsComponent::class)->name('user.orderdetails');
     
 });

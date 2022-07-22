@@ -51,7 +51,7 @@
                                         <td>{{ $order->created_at }}</td>
                                         <td>
                                             <a href="{{ route('user.orderdetails',['order_id'=>$order->id]) }}" class="btn btn-info btn-sm">Details</a>
-                                            {{-- <a href="#" onclick="confirm('Are you sure, You want to delete this category ?')||event.stopimmediatepropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a> --}}
+                                          
                                         </td>
                                     </tr>
                                 @endforeach

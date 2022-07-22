@@ -15,10 +15,49 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Order Item
+                                Order Details
                             </div>
                             <div class="col-md-6">
                                 <a href="{{ route('admin.orders') }}" class="btn btn-success pull-right">All Orders</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <th>Order Id</th>
+                                <td>{{ $order->id }}</td>
+                                <th>Order Date</th>
+                                <td>{{ $order->created_at }}</td>
+                                <th>Status</th>
+                                <td>{{ $order->status }}</td>
+                                <th>Order Date</th>
+                                <td>{{ $order->lastname }}</td>
+                                @if ($order->status == 'delivered')
+                                    <th>Delivered Date</th>
+                                    <td>{{ $order->delivered_date }}</td>
+                                @elseif ($order->status == 'canceled')
+                                    <th>Delivered Date</th>
+                                    <td>{{ $order->canceled_date }}</td>
+                                @endif
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                Order Item
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{ route('admin.orders') }}" class="btn btn-success pull-right">All
+                                    Orders</a>
                             </div>
                         </div>
                     </div>
@@ -121,52 +160,49 @@
         </div>
 
         @if ($order->is_shipping_difference)
-            
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Shipping Details
-                    </div>
-                    <div class="panel-body">
-                        <table class="table">
-                            <tr>
-                                <th>First Name</th>
-                                <td>{{ $order->shipping->fastname }}</td>
-                                <th>Last Name</th>
-                                <td>{{ $order->shipping->lastname }}</td>
-                            </tr>
-                            <tr>
-                                <th>Phone</th>
-                                <td>{{ $order->shipping->mobile }}</td>
-                                <th>Email</th>
-                                <td>{{ $order->shipping->email }}</td>
-                            </tr>
-                            <tr>
-                                <th>Line1</th>
-                                <td>{{ $order->shipping->line1 }}</td>
-                                <th>Line2</th>
-                                <td>{{ $order->shipping->line2 }}</td>
-                            </tr>
-                            <tr>
-                                <th>City</th>
-                                <td>{{ $order->shipping->city }}</td>
-                                <th>Province</th>
-                                <td>{{ $order->shipping->province }}</td>
-                            </tr>
-                            <tr>
-                                <th>Country</th>
-                                <td>{{ $order->shipping->country }}</td>
-                                <th>Zipcode</th>
-                                <td>{{ $order->shipping->zipcode }}</td>
-                            </tr>
-                        </table>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Shipping Details
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <th>First Name</th>
+                                    <td>{{ $order->shipping->fastname }}</td>
+                                    <th>Last Name</th>
+                                    <td>{{ $order->shipping->lastname }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <td>{{ $order->shipping->mobile }}</td>
+                                    <th>Email</th>
+                                    <td>{{ $order->shipping->email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Line1</th>
+                                    <td>{{ $order->shipping->line1 }}</td>
+                                    <th>Line2</th>
+                                    <td>{{ $order->shipping->line2 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>City</th>
+                                    <td>{{ $order->shipping->city }}</td>
+                                    <th>Province</th>
+                                    <td>{{ $order->shipping->province }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Country</th>
+                                    <td>{{ $order->shipping->country }}</td>
+                                    <th>Zipcode</th>
+                                    <td>{{ $order->shipping->zipcode }}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
         @endif
 
 
@@ -190,7 +226,7 @@
                                 <th>Transaction Date</th>
                                 <td>{{ $order->transaction->created_at }}</td>
                             </tr>
-                            
+
                         </table>
                     </div>
                 </div>
