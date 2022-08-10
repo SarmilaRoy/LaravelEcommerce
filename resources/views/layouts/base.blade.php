@@ -36,7 +36,7 @@
 
 <body class="home-page home-01 ">
 
-    
+
     <div class="mercado-clone-wrap">
         <div class="mercado-panels-actions-wrap">
             <a class="mercado-close-btn mercado-close-panels" href="#">x</a>
@@ -44,7 +44,7 @@
         <div class="mercado-panels"></div>
     </div>
 
-   
+
     <header id="header" class="header header-style-1">
         <div class="container-fluid">
             <div class="row">
@@ -140,6 +140,11 @@
                                                             Order</a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="Contact Us"
+                                                            href="{{ route('admin.contact') }}">Contact
+                                                            Message</a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a href="{{ route('logout') }}"
                                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                                     </li>
@@ -164,7 +169,9 @@
                                                             Orders</a>
                                                     </li>
                                                     <li class="menu-item">
-                                                        <a title="Change Password" href="{{ route('user.changePassword') }}">Change Password</a>
+                                                        <a title="Change Password"
+                                                            href="{{ route('user.changePassword') }}">Change
+                                                            Password</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a href="{{ route('logout') }}"
@@ -259,7 +266,7 @@
                                         <a href="/checkout" class="link-term mercado-item-title">Checkout</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
+                                        <a href="/contact-us" class="link-term mercado-item-title">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>
@@ -312,7 +319,7 @@
                         </ul>
                     </div>
                 </div>
-               
+
 
                 <div class="main-footer-content">
 
