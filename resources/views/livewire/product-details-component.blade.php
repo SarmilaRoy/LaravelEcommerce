@@ -30,35 +30,48 @@
                                     <img src="{{ asset('assets/images/products') }}/{{ $product->image }}"
                                         alt="{{ $product->name }}" />
                                 </li>
-
-
+                             
+                                
+                                @php
+                                    $images = explode(',', $product->images);
+                                @endphp
+                                @foreach ($images as $image)
+                                    @if ($image)
+                                    <li data-thumb="{{ asset('assets/images/products') }}/{{ $image }}">
+                                        <img src="{{ asset('assets/images/products') }}/{{ $image }}"
+                                            alt="{{ $product->name }}" />
+                                    </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="detail-info">
                         <div class="product-rating">
                             <style>
-                                .color-gray{
-                                    color:#e6e6e6 !important;
+                                .color-gray {
+                                    color: #e6e6e6 !important;
                                 }
                             </style>
                             @php
                                 $avgrating = 0;
                             @endphp
-                            @foreach ($product->orderItems->where('rstatus',1) as $orderItem)
+                            @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
                                 @php
                                     $avgrating = $avgrating + $orderItem->review->rating;
                                 @endphp
                             @endforeach
-                            @for ($i=1;$i<=5;$i++)
-                                @if ($i<=$avgrating)
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= $avgrating)
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 @else
                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                 @endif
                             @endfor
-                            
-                            <a href="#" class="count-review">({{ $product->orderItems->where('rstatus',1)->count() }} review)</a>
+
+                            <a href="#"
+                                class="count-review">({{ $product->orderItems->where('rstatus', 1)->count() }}
+                                review)</a>
                         </div>
                         <h2 class="product-name">{{ $product->name }}</h2>
                         <div class="short-desc">
@@ -139,60 +152,70 @@
 
                                 <div class="wrap-review-form">
                                     <style>
-                                        .width-0-percent{
+                                        .width-0-percent {
                                             width: :0%;
                                         }
-                                        .width-20-percent{
+
+                                        .width-20-percent {
                                             width: :20%;
                                         }
-                                        .width-40-percent{
+
+                                        .width-40-percent {
                                             width: :40%;
                                         }
-                                        .width-60-percent{
+
+                                        .width-60-percent {
                                             width: :60%;
                                         }
-                                        .width-80-percent{
+
+                                        .width-80-percent {
                                             width: :80%;
                                         }
-                                        .width-100-percent{
+
+                                        .width-100-percent {
                                             width: :100%;
                                         }
                                     </style>
 
                                     <div id="comments">
-                                        <h2 class="woocommerce-Reviews-title">{{ $product->orderItems->where('rstatus',1)->count() }} review for <span>{{ $product->name }}</span></h2>
+                                        <h2 class="woocommerce-Reviews-title">
+                                            {{ $product->orderItems->where('rstatus', 1)->count() }} review for
+                                            <span>{{ $product->name }}</span></h2>
                                         <ol class="commentlist">
 
-                                            @foreach ($product->orderItems->where('rstatus',1) as $orderItem)
-                                        
-                                            <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
-                                                id="li-comment-20">
-                                                <div id="comment-20" class="comment_container">
-                                                    <img alt=""
-                                                        src="{{ asset('assets/images/author-avata.jpg') }}"
-                                                        height="80" width="80">
-                                                    <div class="comment-text">
-                                                        <div class="star-rating">
-                                                            <span class="width-{{ $orderItem->review->rating * 20 }}-percent">Rated <strong
-                                                                    class="rating">{{ $orderItem->review->rating }}</strong> out of 5</span>
-                                                        </div>
-                                                        <p class="meta">
-                                                            <strong class="woocommerce-review__author">{{ $orderItem->order->user->name }}</strong>
-                                                            <span class="woocommerce-review__dash">–</span>
-                                                            <time class="woocommerce-review__published-date"
-                                                                datetime="2008-02-14 20:00">{{ Carbon\Carbon::parse($orderItem->review->created_at)->format('d F Y g:i A') }}</time>
-                                                        </p>
-                                                        <div class="description">
-                                                            <p>{{ $orderItem->review->comment }}</p>
+                                            @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
+                                                <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
+                                                    id="li-comment-20">
+                                                    <div id="comment-20" class="comment_container">
+                                                        <img alt=""
+                                                            src="{{ asset('assets/images/author-avata.jpg') }}"
+                                                            height="80" width="80">
+                                                        <div class="comment-text">
+                                                            <div class="star-rating">
+                                                                <span
+                                                                    class="width-{{ $orderItem->review->rating * 20 }}-percent">Rated
+                                                                    <strong
+                                                                        class="rating">{{ $orderItem->review->rating }}</strong>
+                                                                    out of 5</span>
+                                                            </div>
+                                                            <p class="meta">
+                                                                <strong
+                                                                    class="woocommerce-review__author">{{ $orderItem->order->user->name }}</strong>
+                                                                <span class="woocommerce-review__dash">–</span>
+                                                                <time class="woocommerce-review__published-date"
+                                                                    datetime="2008-02-14 20:00">{{ Carbon\Carbon::parse($orderItem->review->created_at)->format('d F Y g:i A') }}</time>
+                                                            </p>
+                                                            <div class="description">
+                                                                <p>{{ $orderItem->review->comment }}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
                                             @endforeach
                                         </ol>
                                     </div>
 
-                                    
+
 
                                 </div>
                             </div>
