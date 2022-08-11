@@ -83,7 +83,7 @@ class CartComponent extends Component
             session()->flash('msg_coupon', 'Coupon code is Invalid');
             return;
         }
-        session()->put('coupon',[
+        session()->put('coupon', [
             'code' => $coupon->code,
             'type' => $coupon->type,
             'value' => $coupon->value,
@@ -117,7 +117,7 @@ class CartComponent extends Component
 
     public function checkout()
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
             return redirect()->route('checkouts');
         } else {
             return redirect()->route('login');
@@ -126,23 +126,23 @@ class CartComponent extends Component
 
     public function setAmountForCheckout()
     {
-        if(!Cart::instance('cart')->count() > 0){
+        if (!Cart::instance('cart')->count() > 0) {
             session()->forget('checkout');
             return;
         }
-        if(session()->has('coupon')) {
-            session()->put('coupon',[
+        if (session()->has('coupon')) {
+            session()->put('coupon', [
                 'discount' => $this->discount,
                 'subtotal' => $this->subTotalAfterDiscount,
                 'tax' => $this->texAfterDiscount,
-                'total' => $this->totalAfterDiscount
+                'total' => $this->totalAfterDiscount,
             ]);
         } else {
-            session()->put('checkout',[
+            session()->put('checkout', [
                 'discount' => 0,
                 'subtotal' => Cart::instance('cart')->subtotal(),
                 'tax' => Cart::instance('cart')->tax(),
-                'total' => Cart::instance('cart')->total()
+                'total' => Cart::instance('cart')->total(),
             ]);
         }
     }
@@ -160,6 +160,10 @@ class CartComponent extends Component
             }
         }
         $this->setAmountForCheckout();
+
+        if (Auth::check()) {
+            Cart::instance('cart')->store(Auth::user()->email);
+        }
         return view('livewire.cart-component')->layout('layouts.base');
     }
 }
