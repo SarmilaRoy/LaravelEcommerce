@@ -10,6 +10,8 @@ use App\Models\OrderItem;
 use App\Models\Shipping;
 use App\Models\Transaction;
 use Stripe;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail;
 
 
 class CheckoutComponent extends Component
@@ -235,6 +237,7 @@ class CheckoutComponent extends Component
                 $this->thankyou = 0;
             }
         }
+        $this->sendOrderConfirmationMail($order);
     }
 
     public function resetCart()
@@ -252,6 +255,11 @@ class CheckoutComponent extends Component
         $transaction->mode = $this->paymentmode;
         $transaction->status = $status;
         $transaction->save();
+    }
+
+    public function sendOrderConfirmationMail($order){
+        Mail::to($order->email)->send(new OrderMail($order));
+
     }
 
     public function varifyForCheckout()
