@@ -34,7 +34,7 @@
 </x-guest-layout> --}}
 
 
-<x-guest-layout>
+<x-base-layout>
 
     <main id="main" class="main-site left-sidebar">
 
@@ -86,4 +86,4 @@
 
     </main>
 
-</x-guest-layout>
+</x-base-layout>
