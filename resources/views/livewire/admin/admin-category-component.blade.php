@@ -1,10 +1,14 @@
 <div>
     <style>
-        nav svg{
+        nav svg {
             height: 20px;
         }
-        nav.hidden{
+
+        nav.hidden {
             display: block !important;
+        }
+        .sclist{
+            list-style: none;
         }
     </style>
     <div class="container" style="padding: 30px 0;">
@@ -12,20 +16,20 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        
+
                         <div class="row">
                             <div class="col-md-6">
                                 All Categories
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addCategory') }}" class="btn btn-success pull-right">Add New</a>
+                                <a href="{{ route('admin.addCategory') }}" class="btn btn-success pull-right">Add
+                                    New</a>
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         @if (Session::has('msg'))
-                        <div class="alert alert-success" role="alert">{{ Session::get('msg') }}</div>
-                            
+                            <div class="alert alert-success" role="alert">{{ Session::get('msg') }}</div>
                         @endif
                         <table class="table table-striped">
                             <thead>
@@ -33,6 +37,7 @@
                                     <th>ID</th>
                                     <th>Category Name</th>
                                     <th>Slug</th>
+                                    <th>Sub Category</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,8 +48,21 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>
-                                            <a href="{{ route('admin.editCategory',['category_slug'=>$category->slug]) }}"><i class="fa fa-edit fa-2x"></i></a>
-                                            <a href="#" onclick="confirm('Are you sure, You want to delete this category ?')||event.stopimmediatepropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <ul class="sclist">
+                                                @foreach ($category->subCategories as $scategory)
+                                                <li><i class="fa fa-caret-right"></i>{{ $scategory->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <a
+                                                href="{{ route('admin.editCategory', ['category_slug' => $category->slug]) }}"><i
+                                                    class="fa fa-edit fa-2x"></i></a>
+                                            <a href="#"
+                                                onclick="confirm('Are you sure, You want to delete this category ?')||event.stopimmediatepropagation()"
+                                                wire:click.prevent="deleteCategory({{ $category->id }})"
+                                                style="margin-left: 10px;"><i
+                                                    class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
