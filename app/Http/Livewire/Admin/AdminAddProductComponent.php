@@ -10,6 +10,8 @@ use Livewire\WithfileUploads;
 use Carbon\Carbon;
 use Validator;
 
+use App\Models\Subcategory;
+
 
 class AdminAddProductComponent extends Component
 {
@@ -28,6 +30,8 @@ class AdminAddProductComponent extends Component
     public $image;
     public $category_id;
     public $images;
+
+    public $scategory_id;
 
     public function mount(){
         $this->stock_status= 'instock';
@@ -97,13 +101,22 @@ class AdminAddProductComponent extends Component
         
         $product->category_id=$this->category_id;
 
+        if($this->scategory_id){
+            $product->subcategory_id=$this->scategory_id;
+        }
 
         $product->save();
         session()->flash("msg","Product has been created Successfully!!");
     }
+
+    public function changeSubCategory(){
+        $this->scategory_id=0;
+    }
+
     public function render()
     {
         $categories=Category::all();
-        return view('livewire.admin.admin-add-product-component',['categories' => $categories])->layout('layouts.base');
+        $scategories = Subcategory::where('category_id',$this->category_id)->get();
+        return view('livewire.admin.admin-add-product-component',['categories' => $categories,'scategories' => $scategories])->layout('layouts.base');
     }
 }
