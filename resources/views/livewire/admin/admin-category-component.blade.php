@@ -7,8 +7,19 @@
         nav.hidden {
             display: block !important;
         }
-        .sclist{
+
+        .sclist {
             list-style: none;
+        }
+
+        .sclist li {
+            line-height: 33px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .slink {
+            font-size: 15px;
+            margin-left: 12px;
         }
     </style>
     <div class="container" style="padding: 30px 0;">
@@ -50,10 +61,15 @@
                                         <td>
                                             <ul class="sclist">
                                                 @foreach ($category->subCategories as $scategory)
-                                                <li><i class="fa fa-caret-right"></i>{{ $scategory->name }}
-                                                    <a href="{{ route('admin.editCategory',['category_slug' => $category->slug,'scategory_slug' => $scategory->slug]) }}"><i
-                                                        class="fa fa-edit"></i></a>
-                                                </li>
+                                                    <li><i class="fa fa-caret-right"></i>{{ $scategory->name }}
+                                                        <a href="{{ route('admin.editCategory', ['category_slug' => $category->slug, 'scategory_slug' => $scategory->slug]) }}"
+                                                            class="slink"><i class="fa fa-edit"></i></a>
+                                                        <a href="#"
+                                                            onclick="confirm('Are you sure, You want to delete this subcategory ?')||event.stopimmediatepropagation()"
+                                                            wire:click.prevent="deleteSubCategory({{ $scategory->id }})"
+                                                            class="slink">
+                                                            <i class="fa fa-times text-danger"></i></a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </td>
