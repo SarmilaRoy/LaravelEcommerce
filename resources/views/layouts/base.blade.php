@@ -174,6 +174,9 @@
                                                             Orders</a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="My Profile" href="{{ route('user.profile') }}">Profile</a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a title="Change Password"
                                                             href="{{ route('user.changePassword') }}">Change
                                                             Password</a>
