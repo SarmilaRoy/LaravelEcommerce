@@ -1,4 +1,3 @@
-
 <main id="main" class="main-site left-sidebar">
 
     <div class="container">
@@ -54,7 +53,7 @@
                     </div>
 
                 </div>
-              
+
 
 
                 <style>
@@ -110,7 +109,9 @@
                                             To Cart</a>
                                         <div class="product-wish">
                                             @if ($wishitem->contains($product->id))
-                                                <a href="#" wire:click.prevent="romoveFormWishlist({{ $product->id }})"><i class="fa fa-heart fill-heart"></i></a>
+                                                <a href="#"
+                                                    wire:click.prevent="romoveFormWishlist({{ $product->id }})"><i
+                                                        class="fa fa-heart fill-heart"></i></a>
                                             @else
                                                 <a href="#"
                                                     wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i
@@ -138,7 +139,7 @@
 						<p class="result-count">Showing 1-8 of 12 result</p> --}}
                 </div>
             </div>
-          
+
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                 <div class="widget mercado-widget categories-widget">
@@ -146,9 +147,20 @@
                     <div class="widget-content">
                         <ul class="list-category">
                             @foreach ($categories as $category)
-                                <li class="category-item">
+                                <li
+                                    class="category-item {{ count($category->subCategories) > 0 ? 'has-child-cate' : '' }}">
                                     <a href="{{ route('product.category', ['category_slug' => $category->slug]) }}"
                                         class="cate-link">{{ $category->name }}</a>
+                                    @if (count($category->subCategories) > 0)
+                                        <span class="toggle-control"></span>
+                                        <ul class="sub-cate">
+                                            @foreach ($category->subCategories as $scategory)
+                                                <li class="category-item">
+                                                    <a href="#" class="cat-link"><i class="fa fa-caret-right"></i>{{ $scategory->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </li>
                             @endforeach
 
@@ -166,7 +178,8 @@
                             <li class="list-item"><a class="filter-link " href="#">Printer & Ink</a></li>
                             <li class="list-item"><a class="filter-link " href="#">CPUs & Prosecsors</a></li>
                             <li class="list-item"><a class="filter-link " href="#">Sound & Speaker</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Shop Smartphone & Tablets</a>
+                            <li class="list-item"><a class="filter-link " href="#">Shop Smartphone &
+                                    Tablets</a>
                             </li>
                             <li class="list-item default-hiden"><a class="filter-link " href="#">Printer &
                                     Ink</a>
@@ -307,13 +320,13 @@
                 </div>
 
             </div>
-           
+
 
         </div>
-     
+
 
     </div>
- 
+
 
 </main>
 
@@ -321,23 +334,23 @@
 @push('scripts')
     <script>
         var slider = document.getElementById('slider');
-        noUiSlider.create(slider,{
-            start: [1,1000],
+        noUiSlider.create(slider, {
+            start: [1, 1000],
             connect: true,
-            range:{
+            range: {
                 'min': 1,
                 'max': 1000
             },
-            pips:{
-                mode:'steps',
-                stepped:true,
-                density:4
+            pips: {
+                mode: 'steps',
+                stepped: true,
+                density: 4
             }
         });
 
-        slider.noUiSlider.on('update',function(value) {
-            @this.set('min_price',value[0]);
-            @this.set('max_price',value[1]);
+        slider.noUiSlider.on('update', function(value) {
+            @this.set('min_price', value[0]);
+            @this.set('max_price', value[1]);
         });
     </script>
 @endpush
