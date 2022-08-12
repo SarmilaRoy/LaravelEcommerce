@@ -152,7 +152,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-lebel">Category</label>
                                 <div class="col-md-4">
-                                    <select class="form-control" wire:model="category_id" wire:change="changeSubCategory">
+                                    <select class="form-control" wire:model="category_id"
+                                        wire:change="changeSubCategory">
                                         <option value="">Select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -178,6 +179,40 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-lebel">Product Attribute</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" wire:model="attr">
+                                        <option value="0">Select Attribute</option>
+                                        
+                                        @foreach ($pattributes as $pattribute)
+                                            <option selected="selected" value="{{ $pattribute->id }}">{{ $pattribute->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    
+                                    <button type="button" class="btn btn-info"
+                                        wire:click.prevent="add"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+
+                            @foreach ($inputs as $key => $value)
+                            <div class="form-group">
+                                <label class="col-md-4 control-lebel">{{ $pattributes->where('id',$attribute_arr[$key])->first()->name }}</label>
+                                <div class="col-md-4">
+                                    <input type="text" placeholder="{{ $pattributes->where('id',$attribute_arr[$key])->first()->name }}" class="form-control input-md"
+                                        wire:model="attribute_values.{{$value}}">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        wire:click.prevent=""><i class="fa fa-close"></i></button>
+                                </div>
+                            </div>
+                            @endforeach
+
 
                             <div class="form-group">
                                 <label class="col-md-4 control-lebel"></label>
