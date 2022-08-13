@@ -30,17 +30,17 @@
                                     <img src="{{ asset('assets/images/products') }}/{{ $product->image }}"
                                         alt="{{ $product->name }}" />
                                 </li>
-                             
-                                
+
+
                                 @php
                                     $images = explode(',', $product->images);
                                 @endphp
                                 @foreach ($images as $image)
                                     @if ($image)
-                                    <li data-thumb="{{ asset('assets/images/products') }}/{{ $image }}">
-                                        <img src="{{ asset('assets/images/products') }}/{{ $image }}"
-                                            alt="{{ $product->name }}" />
-                                    </li>
+                                        <li data-thumb="{{ asset('assets/images/products') }}/{{ $image }}">
+                                            <img src="{{ asset('assets/images/products') }}/{{ $image }}"
+                                                alt="{{ $product->name }}" />
+                                        </li>
                                     @endif
                                 @endforeach
                             </ul>
@@ -92,7 +92,26 @@
                         <div class="stock-info in-stock">
                             <p class="availability">Availability: <b> {{ $product->stock_status }}</b></p>
                         </div>
-                        <div class="quantity">
+
+                        <div>
+                            @foreach ($product->attributeValues->unique('product_attribute_id') as $attributeVal)
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">
+                                        <p>{{ $attributeVal->productAttribute->name }}</p>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <select class="form-control" style="width: 200px;">
+                                            @foreach ($attributeVal->productAttribute->attributeValues->where('product_id', $product->id) as $pattributeVal)
+                                                <option value="{{ $pattributeVal->id }}">
+                                                    {{ $pattributeVal->value }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="quantity" style="margin-top: 15px">
                             <span>Quantity:</span>
                             <div class="quantity-input">
                                 <input type="text" name="product-quatity" value="1" data-max="120"
@@ -180,7 +199,8 @@
                                     <div id="comments">
                                         <h2 class="woocommerce-Reviews-title">
                                             {{ $product->orderItems->where('rstatus', 1)->count() }} review for
-                                            <span>{{ $product->name }}</span></h2>
+                                            <span>{{ $product->name }}</span>
+                                        </h2>
                                         <ol class="commentlist">
 
                                             @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
@@ -188,7 +208,8 @@
                                                     id="li-comment-20">
                                                     <div id="comment-20" class="comment_container">
                                                         <img alt="{{ $orderItem->order->user->name }}"
-                                                            src="{{ asset('assets/images/profile') }}/{{ $orderItem->order->user->profile->image }}"height="80" width="80">
+                                                            src="{{ asset('assets/images/profile') }}/{{ $orderItem->order->user->profile->image }}"height="80"
+                                                            width="80">
                                                         <div class="comment-text">
                                                             <div class="star-rating">
                                                                 <span
