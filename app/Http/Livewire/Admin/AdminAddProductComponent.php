@@ -58,6 +58,10 @@ class AdminAddProductComponent extends Component
         }
     }
 
+    public function remove($attr){
+        unset($this->inputs[$attr]);
+    
+    }
     public function generateSlug(){
         $this->slug=Str::slug($this->name);
     }

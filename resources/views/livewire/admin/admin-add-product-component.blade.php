@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <button type="button" class="btn btn-danger btn-sm"
-                                        wire:click.prevent=""><i class="fa fa-close"></i></button>
+                                        wire:click.prevent="remove({{ $key }})"><i class="fa fa-close"></i></button>
                                 </div>
                             </div>
                             @endforeach
