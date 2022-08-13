@@ -11,13 +11,17 @@ class ProductDetailsComponent extends Component
 {
     public $slug;
     public $qty;
+
+
+    public $selected_atrr=[];
+
     public function mount($slug){
         $this->slug=$slug;
         $this->qty=1;
     }
 
     public function store($product_id,$product_name,$product_price){
-        Cart::instance('cart')->add($product_id,$product_name,$this->qty,$product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id,$product_name,$this->qty,$product_price,$this->selected_atrr)->associate('App\Models\Product');
         session()->flash('cart-msg','Item Add in Cart');
         return redirect()->route('product.cart');
         
